@@ -24,18 +24,19 @@ def searchLink(url, linkDepth=0):
                 print('Good link')
     except:
         deadLinks.append(url)
-if len(argv) not in [2,3]:
-    print('Usage: %s <url>' % fdlProg)
-    print('Usage: %s -<depth> <url>' % fdlProg)
-    exit(1)
-depth = 0
-url = ''
-for arg in argv:
-    if arg.startswith('-'):
-        try:
-            depth = int(arg[1:])
-        except ValueError:
-            print('Invalid value for link depth: %s' % arg)
-    else:
-        url = arg
-
+if __name__ == '__main__':
+    if len(argv) not in [2,3]:
+        print('Usage: %s <url>' % fdlProg)
+        print('Usage: %s -<depth> <url>' % fdlProg)
+        exit(1)
+    depth = 0
+    url = ''
+    for arg in argv:
+        if arg.startswith('-'):
+            try:
+                depth = int(arg[1:])
+            except ValueError:
+                print('Invalid value for link depth: %s' % arg)
+        else:
+            url = arg
+    searchLink(url, linkDepth=0)
